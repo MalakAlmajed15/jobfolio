@@ -25,7 +25,7 @@ class Application(models.Model):
         ('Rejected', 'rejected')
         ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
-    job_position = models.CharField(max_length=80)
+    job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='job_position')
     date_applied = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=80, choices=STATUS_CHOICES)
     notes = models.TextField(blank=True)
