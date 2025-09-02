@@ -20,3 +20,6 @@ def homepage(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html')
+
+def create_application(require):
+    return render(require, 'application/application-form.html')

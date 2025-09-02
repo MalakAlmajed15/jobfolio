@@ -11,6 +11,7 @@
     <p>Welcome, {{user.username}}</p>
     <a href="{% url 'homepage' %}">Home</a>
     <a href="{% url 'profile' %}">Profile</a>
+    <a href="{% url 'create_application' %}">Add Application</a>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button>Logout</button>
