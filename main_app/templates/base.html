@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFolio</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <p>Welcome, {{user.username}}</p>
+    <a href="{% url 'homepage' %}">Home</a>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button>Logout</button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'signup' %}">SignUp</a>
+    {% endif %}
+    <div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+</html>
