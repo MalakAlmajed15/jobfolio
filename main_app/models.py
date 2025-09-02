@@ -26,7 +26,7 @@ class Application(models.Model):
         ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='job_position')
-    date_applied = models.DateField(auto_now_add=True)
+    date_applied = models.DateField()
     status = models.CharField(max_length=80, choices=STATUS_CHOICES)
     notes = models.TextField(blank=True)
     resume = models.FileField(upload_to='documents/')
