@@ -21,5 +21,15 @@ def homepage(request):
 def profile(request):
     return render(request, 'profile.html')
 
-def create_application(require):
-    return render(require, 'application/application-form.html')
+@login_required
+def create_application(request):
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_Valid():
+            form.save()
+            return redirect('homepage')
+        else:
+            return render(request, 'application/application-form.html', {'form': form})
+    else:
+        form = ApplicationForm()
+    return render(request, 'application/application-form.html', {'form': form})
