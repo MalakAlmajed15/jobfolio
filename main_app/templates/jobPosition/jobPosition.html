@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="{% url 'create_jobPosition' %}">
+        <label for="jobTitle">Job Title: </label>
+        <input type="text" name="jobTitle" id="jobTitle">
+        <label for="company">Company: </label>
+        <input type="text" name="company" id="company">
+        <label for="location">location: </label>
+        <input type="text" name="location" id="location">
+        <label for="salary">salary: </label>
+        <input type="text" name="salary" id="salary">
+    </form>
+{% endblock content %}
+
+{% comment %} ['title', 'company', 'location', 'salary'] {% endcomment %}

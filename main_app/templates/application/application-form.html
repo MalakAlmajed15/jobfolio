@@ -1,18 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Add application</h1>
     <form action="{% url 'create_application' %}" method='post'>
         {% csrf_token %}
-        <div>
-            {{companyForm.as_p}}
-        </div>
-        <div>
-            {{JobPositionForm.as_p}}
-        </div>
-        <div>
-            {{ApplicationForm.as_p}}
-        </div>
+         <label for="name">Name: </label>
+         <input type="text" name="name" id="name">
+        <label for="website">Website: </label>
+        <input type="text" name="website" id="website">
         <button type='submit'>Add Application</button>
     </form>
 {% endblock content %}
