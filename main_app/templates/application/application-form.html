@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Submit Job Application</h2>
+<h1>Submit Job Application</h1>
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     
     <div>
-        <h1>Company Information</h1>
+        {% comment %} <h3>Company Information</h3> {% endcomment %}
         {{ company_form.as_p }}
     </div>
     
     <div>
-        <h1>Job Position</h1>
-        {{ job_form.as_p }}
+        {% comment %} <h3>Job Position</h3> {% endcomment %}
+        {{ jobPosition_form.as_p }}
     </div>
     
     <div>
-        <h1>Application Details</h1>
+        {% comment %} <h3>Application Details</h3> {% endcomment %}
         {{ application_form.as_p }}
     </div>
     

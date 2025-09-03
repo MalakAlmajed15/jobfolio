@@ -9,9 +9,9 @@ class CompanyForm(forms.ModelForm):
 class JobPositionForm(forms.ModelForm):
     class Meta:
         model = JobPosition
-        fields = ['title', 'company', 'location', 'salary']
+        fields = ['location', 'salary']
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = ['job_position', 'date_applied', 'status', 'notes', 'resume']
+        fields = ['user', 'job_position', 'date_applied', 'status', 'notes', 'resume']

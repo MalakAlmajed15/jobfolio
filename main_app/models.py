@@ -12,8 +12,8 @@ class Company(models.Model):
         return self.name
         
 class JobPosition(models.Model):
-    title = models.CharField(max_length=80)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='companies')
+    # title = models.CharField(max_length=80)
+    # company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='companies')
     location = models.CharField(max_length=80)
     salary = models.IntegerField()
 
@@ -30,8 +30,9 @@ class Application(models.Model):
         ('Offer', 'offer'), 
         ('Rejected', 'rejected')
         ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
-    job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='job_positions')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', default=1)
+    # job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='job_positions')
+    job_position = models.CharField(max_length=80)
     date_applied = models.DateField()
     status = models.CharField(max_length=80, choices=STATUS_CHOICES)
     notes = models.TextField(blank=True)

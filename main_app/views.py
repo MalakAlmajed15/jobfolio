@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Company, JobPosition, Application
 from .forms import CompanyForm, JobPositionForm, ApplicationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -24,13 +23,29 @@ def profile(request):
 @login_required
 def create_application(request):
     if request.method == 'POST':
-        form = ApplicationForm(request.POST)
-        if form.is_Valid():
-            form.save()
+        company_form = CompanyForm(request.POST)
+        jobPosition_form = JobPositionForm(request.POST)
+        application_form = ApplicationForm(request.POST, request.FILES)
+        if company_form.is_valid() and jobPosition_form.is_valid() and application_form.is_valid():
+            company = company_form.save()
+            
+            job = jobPosition_form.save(commit=False)
+            job.company = company
+            job.save()
+
+            application = application_form.save(commit=False)
+            application.user = request.user
+            application.save()
             return redirect('homepage')
         else:
             return render(request, 'application/application-form.html', {'form': form})
     else:
-        form = ApplicationForm()
-    return render(request, 'application/application-form.html', {'form': form})
+        company_form = CompanyForm()
+        jobPosition_form = JobPositionForm()
+        application_form = ApplicationForm()       
+    return render(request, 'application/application-form.html', {
+        'company_form': company_form,
+        'jobPosition_form': jobPosition_form,
+        'application_form': application_form
+    })
 
