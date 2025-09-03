@@ -2,4 +2,7 @@
 
 {% block content %}
     <h1>All Applications</h1>
+    {% for application in applications %}
+        <p>{{application.name}}</p>
+    {% endfor %}
 {% endblock content %}
