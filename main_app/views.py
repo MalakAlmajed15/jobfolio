@@ -33,3 +33,4 @@ def create_application(request):
     else:
         form = ApplicationForm()
     return render(request, 'application/application-form.html', {'form': form})
+
