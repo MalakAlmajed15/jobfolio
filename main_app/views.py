@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from .models import Application
 
 class SignUpView(CreateView):
     model = User
@@ -19,6 +20,10 @@ def homepage(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html')
+
+def application_list(request):
+    application = Application.objects.all()
+    return render(request, 'application/application-list.html', {'application': application})
 
 @login_required
 def create_application(request):
