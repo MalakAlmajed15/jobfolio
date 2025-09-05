@@ -10,16 +10,15 @@
     {% if user.is_authenticated %}
     <p>Welcome, {{user.username}}</p>
     <a href="{% url 'homepage' %}">Home</a>
+    <a href="{% url 'application_list' %}">View Applications</a>
     <a href="{% url 'profile' %}">Profile</a>
-    <a href="{% url 'create_application' %}">Add Application</a>
-    <a href="{% url 'application_list' %}">Application List</a>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button>Logout</button>
     </form>
-    {% else %}
+    {% comment %} {% else %}
     <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'signup' %}">Signup</a>
+    <a href="{% url 'signup' %}">Signup</a> {% endcomment %}
     {% endif %}
     <div>
         {% block content %}

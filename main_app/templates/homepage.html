@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Welcome to my website &#128205;</h1>
+    <h1>JobFolio</h1>
+    <p>All your job applications, organized in one click</p>
+    <a href="{% url 'application_list' %}">View Applications</a>
+    <a href="{% url 'create_application' %}">Add Application</a>
 {% endblock content %}
 
