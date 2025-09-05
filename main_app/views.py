@@ -43,7 +43,10 @@ def create_application(request):
             application.save()
             return redirect('homepage')
         else:
-            return render(request, 'application/application-form.html', {'form': form})
+            return render(request, 'application/application-form.html', {        
+                'company_form': company_form,
+                'jobPosition_form': jobPosition_form,
+                'application_form': application_form})
     else:
         company_form = CompanyForm()
         jobPosition_form = JobPositionForm()
