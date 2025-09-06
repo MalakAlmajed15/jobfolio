@@ -42,7 +42,7 @@ def create_application(request):
             application.user = request.user
             application.job_position = job
             application.save()
-            return redirect('homepage')
+            return redirect('application_list')
         else:
             return render(request, 'application/application-form.html', {        
                 'company_form': company_form,

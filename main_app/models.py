@@ -21,7 +21,7 @@ class JobPosition(models.Model):
         db_table = 'job_positions'
 
     def __str__(self):
-        return self.title
+        return self.location
     
 class Application(models.Model):
     STATUS_CHOICES = [
