@@ -12,8 +12,10 @@
   <li>Status: {{ application.status }}</li>
   <li>Notes: {{ application.notes}}</li>
   <li>Resume: {{application.resume.url}} </li>
-    <a href="{% url 'edit_application' app.pk%}">Edit</a>
-    <a href="{% url 'delete_application' app.pk%}">Delete</a>
-
+    <a href="{% url 'edit_application' application.pk%}">Edit</a>
+  <form action="{% url 'delete_application' application.pk%}" method='post'>
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
 </ul>
 {% endblock %}
