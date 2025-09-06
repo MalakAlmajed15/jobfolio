@@ -57,3 +57,8 @@ def create_application(request):
         'jobPosition_form': jobPosition_form,
         'application_form': application_form
     })
+
+@login_required
+def application_details(request, pk):
+    application = Application.objects.get(pk=pk)
+    return render(request, 'application/application-details.html', {'application': application})

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Application Details</h1>
+<ul>
+  <li>Company Name: {{ application.job_position.company.name }}</li>
+  <li>Company Website: {{ application.job_position.company.website }}</li>
+  <li>Job Position: {{ application.job_position.title }}</li>
+  <li>Company Location: {{ application.job_position.location }}</li>
+  <li>Salary: {{ application.job_position.salary }}</li>
+  <li>Date Applied: {{ application.date_applied }}</li>
+  <li>Status: {{ application.status }}</li>
+  <li>Notes: {{ application.notes}}</li>
+  <li>Resume: {{application.resume.url}} </li>
+    <a href="{% url 'edit_application' app.pk%}">Edit</a>
+    <a href="{% url 'delete_application' app.pk%}">Delete</a>
+
+</ul>
+{% endblock %}

@@ -13,8 +13,9 @@ class CompanyForm(forms.ModelForm):
 class JobPositionForm(forms.ModelForm):
     class Meta:
         model = JobPosition
-        fields = ['location', 'salary']
+        fields = ['title', 'location', 'salary']
         labels = {
+            'title': 'Job Title',
             'location': 'Company Location',
             'salary': 'Salary'
         }
@@ -29,4 +30,7 @@ class ApplicationForm(forms.ModelForm):
             'status': 'Application Status',
             'notes': 'Additional Notes',
             'resume': 'Upload Resume'
+        }
+        widgets = {
+            'date_applied': forms.DateInput(attrs={'type': 'date'}),
         }

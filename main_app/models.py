@@ -6,14 +6,14 @@ class Company(models.Model):
     website = models.URLField(max_length=300, blank=True)
 
     class Meta:
-        db_table = 'Companies'
+        db_table = 'companies'
 
     def __str__(self):
         return self.name
         
 class JobPosition(models.Model):
-    # title = models.CharField(max_length=80)
-    # company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='companies')
+    title = models.CharField(max_length=80, null=True, blank=True)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='positions', null=True, blank=True)
     location = models.CharField(max_length=80)
     salary = models.IntegerField()
 
@@ -21,7 +21,7 @@ class JobPosition(models.Model):
         db_table = 'job_positions'
 
     def __str__(self):
-        return self.location
+        return self.title
     
 class Application(models.Model):
     STATUS_CHOICES = [
@@ -30,9 +30,10 @@ class Application(models.Model):
         ('Offer', 'offer'), 
         ('Rejected', 'rejected')
         ]
+    # company = models.ForeignKey(Company, on_delete=models.CASCADE,related_name='company')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', default=1)
     # job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='job_positions')
-    job_position = models.CharField(max_length=80)
+    job_position = models.CharField( max_length=50)
     date_applied = models.DateField()
     status = models.CharField(max_length=80, choices=STATUS_CHOICES)
     notes = models.TextField(blank=True)
