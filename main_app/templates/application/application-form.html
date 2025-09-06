@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Submit Job Application</h1>
+<h1>Add Job Application</h1>
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" action="{% url 'create_application' %}">
     {% csrf_token %}
     
     <div>

@@ -14,4 +14,4 @@ class JobPositionForm(forms.ModelForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = ['user', 'job_position', 'date_applied', 'status', 'notes', 'resume']
+        fields = ['job_position', 'date_applied', 'status', 'notes', 'resume']
