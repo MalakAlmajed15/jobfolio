@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Add Job Application</h1>
 
-<form method="POST" action="{% url 'create_application' %}">
+<form method="POST" action="{% url 'create_application' %}" enctype='multipart/form-data'>
     {% csrf_token %}
     
     <div>

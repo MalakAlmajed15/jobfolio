@@ -40,6 +40,7 @@ def create_application(request):
 
             application = application_form.save(commit=False)
             application.user = request.user
+            application.job_position = job
             application.save()
             return redirect('homepage')
         else:
@@ -56,4 +57,3 @@ def create_application(request):
         'jobPosition_form': jobPosition_form,
         'application_form': application_form
     })
-
