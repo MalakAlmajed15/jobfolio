@@ -21,6 +21,7 @@ def homepage(request):
 def profile(request):
     return render(request, 'profile.html')
 
+@login_required
 def application_list(request):
     application = Application.objects.all()
     return render(request, 'application/application-list.html', {'application': application})
@@ -61,4 +62,43 @@ def create_application(request):
 @login_required
 def application_details(request, pk):
     application = Application.objects.get(pk=pk)
+    return render(request, 'application/application-details.html', {'application': application})
+
+@login_required
+def edit_application(request, pk):
+    application = Application.objects.get(pk=pk)
+    company = application.job_position.company
+    job = application.job_position
+
+    if request.method == 'POST':
+        company_form = CompanyForm(request.POST, instance=company)
+        jobPosition_form = JobPositionForm(request.POST, instance=job)
+        application_form = ApplicationForm(request.POST, request.FILES, instance=application)
+        
+        if company_form.is_valid() and jobPosition_form.is_valid() and application_form.is_valid():
+            company_form.save()
+            jobPosition_form.save()
+            application_form.save()
+            return redirect('application_list')
+        else:
+            return render(request, 'application/application-form.html', {        
+                'company_form': company_form,
+                'jobPosition_form': jobPosition_form,
+                'application_form': application_form})
+    else:
+        company_form = CompanyForm(instance=company)
+        jobPosition_form = JobPositionForm(instance=job)
+        application_form = ApplicationForm(instance=application)       
+    return render(request, 'application/application-form.html', {
+        'company_form': company_form,
+        'jobPosition_form': jobPosition_form,
+        'application_form': application_form
+    })
+
+@login_required
+def delete_application(request, pk):
+    application = Application.objects.get(pk=pk)
+    if request.method == 'POST':
+        application.delete()
+        return redirect('application_list')
     return render(request, 'application/application-details.html', {'application': application})
