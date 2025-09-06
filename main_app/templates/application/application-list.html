@@ -7,7 +7,7 @@
       {% for app in application %}
         <ul>
           <li>Company name: {{ app.job_position.company.name}}</li>
-          <li>Job Position: {{ app.job_position.title}}</li>
+          <li>Job Position: {{ app.job_position}}</li>
           <li>Date Applied: {{ app.date_applied}}</li>
           <a href="{% url 'application_details' app.pk%}">Show details</a>
         </ul>

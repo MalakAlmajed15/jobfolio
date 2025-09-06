@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+# from django.utils import timezone
 
 class Company(models.Model):
     name = models.CharField(max_length=80)
@@ -12,8 +13,8 @@ class Company(models.Model):
         return self.name
         
 class JobPosition(models.Model):
-    title = models.CharField(max_length=80, null=True, blank=True)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='positions', null=True, blank=True)
+    title = models.CharField(max_length=80)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='positions')
     location = models.CharField(max_length=80)
     salary = models.IntegerField()
 
@@ -30,14 +31,13 @@ class Application(models.Model):
         ('Offer', 'offer'), 
         ('Rejected', 'rejected')
         ]
-    # company = models.ForeignKey(Company, on_delete=models.CASCADE,related_name='company')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', default=1)
-    # job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='job_positions')
-    job_position = models.CharField( max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='applications')
+    job_position = models.CharField(max_length=50)
+    # job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='applications')
     date_applied = models.DateField()
     status = models.CharField(max_length=80, choices=STATUS_CHOICES)
     notes = models.TextField(blank=True)
-    resume = models.FileField(upload_to='documents/')
+    resume = models.FileField(upload_to='documents/', blank=True)
 
     class Meta:
         db_table = 'applications'

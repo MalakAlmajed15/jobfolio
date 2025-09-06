@@ -23,7 +23,7 @@ class JobPositionForm(forms.ModelForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = ['job_position', 'date_applied', 'status', 'notes', 'resume']
+        fields = ['job_position','date_applied','status', 'notes', 'resume']
         labels = {
             'job_position': 'Job Position',
             'date_applied': 'Date Applied',
