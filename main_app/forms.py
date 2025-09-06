@@ -5,9 +5,9 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ['name', 'website']
-        widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Company Name'}),
-            'website': forms.URLInput(attrs={'placeholder': 'https://example.com'}),
+        labels = {
+            'name': 'Company Name',
+            'website': 'Company Website'
         }
 
 class JobPositionForm(forms.ModelForm):
