@@ -6,7 +6,8 @@
 {% if application %}
       {% for app in application %}
         <ul>
-          <li>Company name: {{ app.job_position.company.name}}</li>
+          {% comment %} <li>Company Name: {{ app.job_position.company.name.website}}</li> {% endcomment %}
+          <li>Company Name: {{app.}}</li>
           <li>Job Title: {{ app.job_position.title}}</li>
           <li>Date Applied: {{ app.date_applied}}</li>
           <a href="{% url 'application_details' app.pk%}">Show details</a>
