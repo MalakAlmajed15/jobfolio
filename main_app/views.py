@@ -49,17 +49,14 @@ def application_list(request):
 @login_required
 def create_application(request):
     if request.method == 'POST':
-        # print(request.POST)
         company_form = CompanyForm(request.POST)
         jobPosition_form = JobPositionForm(request.POST)
         application_form = ApplicationForm(request.POST, request.FILES)
         if company_form.is_valid() and jobPosition_form.is_valid() and application_form.is_valid():
-            # print("All forms are valid")
             company = company_form.save()
             
             job = jobPosition_form.save(commit=False)
             job.company = company
-            # print('JOB:', job.job_position)
             job.save()
 
             application = application_form.save(commit=False)
@@ -98,11 +95,17 @@ def edit_application(request, pk):
         company_form = CompanyForm(request.POST, instance=company)
         jobPosition_form = JobPositionForm(request.POST, instance=job)
         application_form = ApplicationForm(request.POST, request.FILES, instance=application)
-        
         if company_form.is_valid() and jobPosition_form.is_valid() and application_form.is_valid():
-            company_form.save()
-            jobPosition_form.save()
-            application_form.save()
+            company = company_form.save()
+            
+            job = jobPosition_form.save(commit=False)
+            job.company = company
+            job.save()
+
+            application = application_form.save(commit=False)
+            application.user = request.user
+            application.job_position = job
+            application.save()
             return redirect('application_list')
         else:
             return render(request, 'application/application-form.html', {        
