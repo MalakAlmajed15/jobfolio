@@ -11,6 +11,7 @@
   <li>Date Applied: {{ application.date_applied }}</li>
   <li>Status: {{ application.status }}</li>
   <li>Notes: {{ application.notes}}</li>
+  {% comment %} <li>Resume: <a href="{{application.resume}}">{{application.resume}}</a></li> {% endcomment %}
   <li>Resume: {{application.resume}} </li>
     <a href="{% url 'edit_application' application.pk%}">Edit</a>
   <form action="{% url 'delete_application' application.pk%}" method='post'>
