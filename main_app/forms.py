@@ -13,9 +13,9 @@ class CompanyForm(forms.ModelForm):
 class JobPositionForm(forms.ModelForm):
     class Meta:
         model = JobPosition
-        fields = ['title', 'location', 'salary']
+        fields = ['job_position', 'location', 'salary']
         labels = {
-            'title': 'Job Title',
+            'job_position': 'Job Position',
             'location': 'Company Location',
             'salary': 'Salary'
         }
@@ -23,9 +23,8 @@ class JobPositionForm(forms.ModelForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = ['job_position','date_applied','status', 'notes', 'resume']
+        fields = ['date_applied','status', 'notes', 'resume']
         labels = {
-            'job_position': 'Job Position',
             'date_applied': 'Date Applied',
             'status': 'Application Status',
             'notes': 'Additional Notes',

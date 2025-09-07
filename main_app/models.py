@@ -13,7 +13,7 @@ class Company(models.Model):
         return self.name
         
 class JobPosition(models.Model):
-    title = models.CharField(max_length=80)
+    job_position = models.CharField(max_length=50)
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='positions')
     location = models.CharField(max_length=80)
     salary = models.IntegerField()
@@ -22,7 +22,7 @@ class JobPosition(models.Model):
         db_table = 'job_positions'
 
     def __str__(self):
-        return self.title
+        return self.job_position
     
 class Application(models.Model):
     STATUS_CHOICES = [
@@ -32,8 +32,6 @@ class Application(models.Model):
         ('Rejected', 'rejected')
         ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='applications')
-    job_position = models.CharField(max_length=50)
-    # job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='applications')
     date_applied = models.DateField()
     status = models.CharField(max_length=80, choices=STATUS_CHOICES)
     notes = models.TextField(blank=True)

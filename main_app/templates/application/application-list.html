@@ -3,11 +3,10 @@
 {% block content %}
 <h1>Applications</h1>
 <a href="{% url 'create_application' %}">Add Application</a>
-{% if application %}
+{% if applications.job_position %}
       {% for app in application %}
         <ul>
-          {% comment %} <li>Company Name: {{ app.job_position.company.name.website}}</li> {% endcomment %}
-          <li>Company Name: {{app.}}</li>
+          <li>Company Name: {{app.job_position.company.name}}</li>
           <li>Job Title: {{ app.job_position.title}}</li>
           <li>Date Applied: {{ app.date_applied}}</li>
           <a href="{% url 'application_details' app.pk%}">Show details</a>
