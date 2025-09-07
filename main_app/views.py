@@ -119,7 +119,8 @@ def edit_application(request, pk):
     return render(request, 'application/application-form.html', {
         'company_form': company_form,
         'jobPosition_form': jobPosition_form,
-        'application_form': application_form
+        'application_form': application_form,
+        'application': application,
     })
 
 @login_required

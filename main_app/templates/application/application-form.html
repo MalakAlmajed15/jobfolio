@@ -1,26 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Add Job Application</h1>
 
-<form method="POST" action="{% url 'create_application' %}" enctype='multipart/form-data'>
-    {% csrf_token %}
+{% if application %}
+<h1>Edit {{ application.job_position.company.name }}</h1>
+    <form method="POST" action="{% url 'edit_application' application.pk %}">
+        {% csrf_token %}
     
     <div>
-        {% comment %} <h3>Company Information</h3> {% endcomment %}
         {{ company_form.as_p }}
     </div>
     
     <div>
-        {% comment %} <h3>Job Position</h3> {% endcomment %}
         {{ jobPosition_form.as_p }}
     </div>
     
     <div>
-        {% comment %} <h3>Application Details</h3> {% endcomment %}
+        {{ application_form.as_p }}
+    </div>
+    
+    <button type="submit">Edit Application</button>
+    </form>
+    {% else %}
+    <h1>Add Job Application</h1>
+        <form method="POST" action="{% url 'create_application' %}">
+    {% csrf_token %}
+    
+    <div>
+        {{ company_form.as_p }}
+    </div>
+    
+    <div>
+        {{ jobPosition_form.as_p }}
+    </div>
+    
+    <div>
         {{ application_form.as_p }}
     </div>
     
     <button type="submit">Submit Application</button>
 </form>
+{% endif %}
 {% endblock %}
