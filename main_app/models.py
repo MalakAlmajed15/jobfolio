@@ -36,7 +36,8 @@ class Application(models.Model):
     status = models.CharField(max_length=80, choices=STATUS_CHOICES)
     notes = models.TextField(blank=True)
     resume = models.FileField(upload_to='documents/', blank=True)
-
+    job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE, related_name='applications', null=
+                                     True)
     class Meta:
         db_table = 'applications'
 

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from .models import Application
+from .models import Application, JobPosition
 
 class SignUpView(CreateView):
     model = User
@@ -24,19 +24,41 @@ def profile(request):
 @login_required
 def application_list(request):
     application = Application.objects.all()
-    return render(request, 'application/application-list.html', {'application': application})
+    return render(request, 'application/application-list.html', {'applications': application})
+
+def create_application_simple(request, pk):
+    if request.method == 'POST':
+        application_form = ApplicationForm(request.POST, request.FILES)
+        if  application_form.is_valid():
+            job_position = JobPosition.objects.get(pk=pk)
+            application = application_form.save(commit=False)
+            application.user = request.user
+            application.job_position = job_position
+            application.save()
+            return redirect('application_list')
+        else:
+            return render(request, 'application/application-form.html', {        
+                'application_form': application_form})
+    else:
+        application_form = ApplicationForm()       
+    return render(request, 'application/application-form.html', {
+        'application_form': application_form
+    })
 
 @login_required
 def create_application(request):
     if request.method == 'POST':
+        print(request.POST)
         company_form = CompanyForm(request.POST)
         jobPosition_form = JobPositionForm(request.POST)
         application_form = ApplicationForm(request.POST, request.FILES)
         if company_form.is_valid() and jobPosition_form.is_valid() and application_form.is_valid():
+            print("All forms are valid")
             company = company_form.save()
             
             job = jobPosition_form.save(commit=False)
             job.company = company
+            print('JOB:', job.job_position)
             job.save()
 
             application = application_form.save(commit=False)
@@ -45,6 +67,7 @@ def create_application(request):
             application.save()
             return redirect('application_list')
         else:
+            print("One or more forms are invalid")
             return render(request, 'application/application-form.html', {        
                 'company_form': company_form,
                 'jobPosition_form': jobPosition_form,

@@ -4,8 +4,8 @@
 <h1>Application Details</h1>
 <ul>
   <li>Company Name: {{ application.job_position.company.name }}</li>
-  <li>Company Website: {{ application.job_position.company.website }}</li>
-  <li>Job Title: {{ application.job_position.title }}</li>
+  <li>Company Website: <a href="{{ application.job_position.company.website }}">{{ application.job_position.company.name }}</a></li>
+  <li>Job Title: {{ application.job_position.job_position }}</li>
   <li>Company Location: {{ application.job_position.location }}</li>
   <li>Salary: {{ application.job_position.salary }}</li>
   <li>Date Applied: {{ application.date_applied }}</li>
