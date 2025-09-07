@@ -26,39 +26,40 @@ def application_list(request):
     application = Application.objects.all()
     return render(request, 'application/application-list.html', {'applications': application})
 
-def create_application_simple(request, pk):
-    if request.method == 'POST':
-        application_form = ApplicationForm(request.POST, request.FILES)
-        if  application_form.is_valid():
-            job_position = JobPosition.objects.get(pk=pk)
-            application = application_form.save(commit=False)
-            application.user = request.user
-            application.job_position = job_position
-            application.save()
-            return redirect('application_list')
-        else:
-            return render(request, 'application/application-form.html', {        
-                'application_form': application_form})
-    else:
-        application_form = ApplicationForm()       
-    return render(request, 'application/application-form.html', {
-        'application_form': application_form
-    })
+# @login_required
+# def create_application_simple(request, pk):
+#     if request.method == 'POST':
+#         application_form = ApplicationForm(request.POST, request.FILES)
+#         if  application_form.is_valid():
+#             job_position = JobPosition.objects.get(pk=pk)
+#             application = application_form.save(commit=False)
+#             application.user = request.user
+#             application.job_position = job_position
+#             application.save()
+#             return redirect('application_list')
+#         else:
+#             return render(request, 'application/application-form.html', {        
+#                 'application_form': application_form})
+#     else:
+#         application_form = ApplicationForm()       
+#     return render(request, 'application/application-form.html', {
+#         'application_form': application_form
+#     })
 
 @login_required
 def create_application(request):
     if request.method == 'POST':
-        print(request.POST)
+        # print(request.POST)
         company_form = CompanyForm(request.POST)
         jobPosition_form = JobPositionForm(request.POST)
         application_form = ApplicationForm(request.POST, request.FILES)
         if company_form.is_valid() and jobPosition_form.is_valid() and application_form.is_valid():
-            print("All forms are valid")
+            # print("All forms are valid")
             company = company_form.save()
             
             job = jobPosition_form.save(commit=False)
             job.company = company
-            print('JOB:', job.job_position)
+            # print('JOB:', job.job_position)
             job.save()
 
             application = application_form.save(commit=False)
