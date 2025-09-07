@@ -3,4 +3,6 @@
 {% block content %}
     <h1>profile</h1>
     <p>{{user.username}}</p>
+    <p>Number of job applications: {{application_count}}</p>
+    <a href="{% url 'create_application' %}">Add Application</a>
 {% endblock content %}

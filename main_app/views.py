@@ -19,7 +19,8 @@ def homepage(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+    application_count = Application.objects.filter(user=request.user).count()
+    return render(request, 'profile.html', {'application_count': application_count})
 
 @login_required
 def application_list(request):
