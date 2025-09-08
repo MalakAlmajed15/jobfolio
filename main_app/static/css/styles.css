@@ -138,3 +138,19 @@ a:hover {
   transform: translateY(-1.5px);
   opacity: 0.95;
 }
+
+/* .form-text {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: red;
+}
+
+.form-text a {
+  color: red;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.form-text a:hover {
+  text-decoration: underline;
+} */
