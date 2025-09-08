@@ -41,6 +41,7 @@ def create_application(request):
             job.save()
 
             application = application_form.save(commit=False)
+            print(application)
             application.user = request.user
             application.job_position = job
             application.save()
