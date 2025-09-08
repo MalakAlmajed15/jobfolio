@@ -27,26 +27,6 @@ def application_list(request):
     application = Application.objects.all()
     return render(request, 'application/application-list.html', {'applications': application})
 
-# @login_required
-# def create_application_simple(request, pk):
-#     if request.method == 'POST':
-#         application_form = ApplicationForm(request.POST, request.FILES)
-#         if  application_form.is_valid():
-#             job_position = JobPosition.objects.get(pk=pk)
-#             application = application_form.save(commit=False)
-#             application.user = request.user
-#             application.job_position = job_position
-#             application.save()
-#             return redirect('application_list')
-#         else:
-#             return render(request, 'application/application-form.html', {        
-#                 'application_form': application_form})
-#     else:
-#         application_form = ApplicationForm()       
-#     return render(request, 'application/application-form.html', {
-#         'application_form': application_form
-#     })
-
 @login_required
 def create_application(request):
     if request.method == 'POST':
