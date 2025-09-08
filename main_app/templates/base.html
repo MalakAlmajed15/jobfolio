@@ -2,24 +2,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JobFolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JobFolio</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    {% if user.is_authenticated %}
-    <p>Welcome, {{user.username}}</p>
-    <a href="{% url 'homepage' %}">Home</a>
-    <a href="{% url 'application_list' %}">View Applications</a>
-    <a href="{% url 'profile' %}">Profile</a>
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button>Logout</button>
-    </form>
-    {% endif %}
-    <div>
-        {% block content %}
-        {% endblock content %}
+    <div class="nav-container">
+      <a class="logo" href="{% url 'homepage' %}">JobFolio</a>
+
+      {% if user.is_authenticated %}
+      <nav class="nav-bar">
+        <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+        <a class="nav-link" href="{% url 'application_list' %}">Applications</a>
+        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+
+        <form class="logout-form" action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="logout-button">Logout</button>
+        </form>
+      </nav>
+      {% else %}
+      <nav class="nav-bar">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+        <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+      </nav>
+      {% endif %}
     </div>
+
+  <div class="main-container">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
 </body>
 </html>
