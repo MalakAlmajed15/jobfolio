@@ -1,10 +1,13 @@
-{% block content %}
-    <h1>Sign up</h1>
+{% extends "base.html" %}
 
-    <form method="post">
+{% block content %}
+  <div class="auth-container-signup">
+    <h1 class="auth-title">Sign Up</h1>
+
+    <form method="post" class="auth-form">
         {% csrf_token %}
-        {{form.as_p}}
-        <button>Sign up</button>
-        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        {{ form.as_p }}
+        <button type="submit" class="auth-button">Sign Up</button>
     </form>
+  </div>
 {% endblock %}
