@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>JobFolio</h1>
-    <p>All your job applications, organized in one click</p>
-    <a href="{% url 'application_list' %}">View Applications</a>
-    <a href="{% url 'create_application' %}">Add Application</a>
+<div style="text-align: center; margin-top: 100px;">
+    <h1 style="color: black; font-size: 100px;">JobFolio</h1>
+    <p style='font-size: 15px;'>All your job applications, organized in one click</p>
+    <a href="{% url 'application_list' %}" >View Applications</a>
+    <a href="{% url 'create_application' %}" >Add Application</a>
+</div>
 {% endblock content %}
 

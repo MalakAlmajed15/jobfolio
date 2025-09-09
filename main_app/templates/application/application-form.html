@@ -3,42 +3,42 @@
 {% block content %}
 
 {% if application %}
-<h1>Edit {{ application.job_position.company.name }}</h1>
+<h1 class='form-title'>Edit {{ application.job_position.company.name }}</h1>
     <form method="POST" action="{% url 'edit_application' application.pk %}">
         {% csrf_token %}
     
-    <div>
+    <div class="company-form">
         {{ company_form.as_p }}
     </div>
     
-    <div>
+    <div class="job-position-form">
         {{ jobPosition_form.as_p }}
     </div>
     
-    <div>
+    <div class="application-form">
         {{ application_form.as_p }}
     </div>
     
-    <button type="submit">Edit Application</button>
+    <button type="submit" class='form-button'>Edit Application</button>
     </form>
     {% else %}
-    <h1>Add Job Application</h1>
-        <form method="POST" action="{% url 'create_application' %}">
+    <h1 class='form-title'>Add Job Application</h1>
+        <form method="POST" action="{% url 'create_application' %}"  enctype="multipart/form-data">
     {% csrf_token %}
     
-    <div>
+    <div class="company-form">
         {{ company_form.as_p }}
     </div>
     
-    <div>
+    <div class="job-position-form">
         {{ jobPosition_form.as_p }}
     </div>
     
-    <div>
+    <div class="application-form">
         {{ application_form.as_p }}
     </div>
     
-    <button type="submit">Submit Application</button>
+    <button type="submit" class='form-button'>Submit Application</button>
 </form>
 {% endif %}
 {% endblock %}

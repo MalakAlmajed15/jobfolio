@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Applications</h1>
-<a href="{% url 'create_application' %}">Add Application</a>
+<h1 class= 'list-title'>Applications</h1>
+<a href="{% url 'create_application' %}" class='list-button'>Add Application</a>
 {% if applications %}
       {% for app in applications %}
-        <ul>
-          <li>Company Name: {{app.job_position.company.name}}</li>
-          <li>Job Title: {{ app.job_position.job_position}}</li>
-          <li>Date Applied: {{ app.date_applied}}</li>
-          <a href="{% url 'application_details' app.pk%}">Show details</a>
+        <ul class='application-list'>
+          <li class='list-item'>Company Name: {{app.job_position.company.name}}</li>
+          <li class='list-item'>Job Title: {{ app.job_position.job_position}}</li>
+          <li class='list-item'>Date Applied: {{ app.date_applied}}</li>
+          <a href="{% url 'application_details' app.pk%}" class='details-button'>Show details</a>
         </ul>
       {% endfor %}
 {% else %}
-  <p>No applications yet.</p>
+  <p class='list-message'>No applications yet.</p>
 {% endif %}
 
 {% endblock %}

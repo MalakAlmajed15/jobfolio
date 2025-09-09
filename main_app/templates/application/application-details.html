@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Application Details</h1>
-<ul>
-  <li>Company Name: {{ application.job_position.company.name }}</li>
-  <li>Company Website: <a href="{{ application.job_position.company.website }}">{{ application.job_position.company.name }}</a></li>
-  <li>Job Title: {{ application.job_position.job_position }}</li>
-  <li>Company Location: {{ application.job_position.location }}</li>
-  <li>Salary: {{ application.job_position.salary }}</li>
-  <li>Date Applied: {{ application.date_applied }}</li>
-  <li>Status: {{ application.status }}</li>
-  <li>Notes: {{ application.notes}}</li>
-  <li>Resume: 
+<h1 class='details-title'>Application Details</h1>
+<ul class='details-list'>
+  <li class='list-item'>Company Name: {{ application.job_position.company.name }}</li>
+  <li class='list-item'>Company Website: <a href="{{ application.job_position.company.website }}">{{ application.job_position.company.name }}</a></li>
+  <li class='list-item'>Job Title: {{ application.job_position.job_position }}</li>
+  <li class='list-item'>Company Location: {{ application.job_position.location }}</li>
+  <li class='list-item'>Salary: {{ application.job_position.salary }}</li>
+  <li class='list-item'>Date Applied: {{ application.date_applied }}</li>
+  <li class='list-item'>Status: {{ application.status }}</li>
+  <li class='list-item'>Notes: {{ application.notes}}</li>
+  <li class='list-item'>Resume: 
     {% if application.resume %}
-      <a href="{{ application.resume.url }}" >View Resume</a>
+      <a href="{{ application.resume.url }}" class='list-button'>View Resume</a>
     {% else %}
       No resume uploaded.
     {% endif %}
     </li>    
-  <a href="{% url 'edit_application' application.pk%}">Edit</a>
+  <a href="{% url 'edit_application' application.pk%}" class='list-button'>Edit</a>
   <form action="{% url 'delete_application' application.pk%}" method='post'>
     {% csrf_token %}
-    <button type="submit">Delete</button>
+    <button type="submit"  class='list-button'>Delete</button>
   </form>
 </ul>
 {% endblock %}
