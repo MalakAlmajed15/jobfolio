@@ -7,8 +7,10 @@
     <p style='font-size: 15px; margin-top: 5px;'>All your job applications, organized in one click</p>
     </div>
     <div style="display: flex; justify-content: center; gap: 20px; ">
-    <a href="{% url 'application_list' %}" style= "color: black; border: 1.5px solid black; padding: .5rem .85rem; border-radius: 6px; cursor: pointer;  background-color: antiquewhite;  font-weight: 600; " >View Applications</a>
-    <a href="{% url 'create_application' %}" style= "color: black; border: 1.5px solid black; padding: .5rem .85rem; border-radius: 6px; cursor: pointer;  background-color: antiquewhite;  font-weight: 600; " >Add Application</a>
+    <a href="{% url 'application_list' %}" style= "color: black; border: 1.5px solid black; padding: .5rem .85rem; border-radius: 6px; cursor: pointer;  background-color: antiquewhite;  font-weight: 600; " onmouseover=" this.style.transform='scale(1.05)';this.style.color='black'; this.style.backgroundColor='white';"
+           onmouseout="this.style.backgroundColor='antiquewhite'; this.style.color='black'; this.style.transform='scale(1)';">View Applications</a>
+    <a href="{% url 'create_application' %}" style= "color: black; border: 1.5px solid black; padding: .5rem .85rem; border-radius: 6px; cursor: pointer;  background-color: antiquewhite;  font-weight: 600; " onmouseover=" this.style.transform='scale(1.05)';this.style.color='black'; this.style.backgroundColor='white';"
+           onmouseout="this.style.backgroundColor='antiquewhite'; this.style.color='black'; this.style.transform='scale(1)';">Add Application</a>
     </div>
 </div>
 {% endblock content %}
