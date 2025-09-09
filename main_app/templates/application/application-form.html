@@ -2,43 +2,42 @@
 
 {% block content %}
 
-{% if application %}
-<h1 style="color: blue">Edit {{ application.job_position.company.name }}</h1>
-    <form method="POST" action="{% url 'edit_application' application.pk %}" enctype="multipart/form-data">
-        {% csrf_token %}
-    
-    <div class="company-form">
-        {{ company_form.as_p }}
-    </div>
-    
-    <div class="job-position-form">
-        {{ jobPosition_form.as_p }}
-    </div>
-    
-    <div class="application-form">
-        {{ application_form.as_p }}
-    </div>
-    
-    <button type="submit" class='form-button'>Edit Application</button>
-    </form>
+<div style="max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid #ddd; border-radius: 10px; background-color: #fafafa; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+
+    {% if application %}
+        <h1 style="color: black; font-size: 28px; margin-bottom: 20px; text-align: center;">
+            Edit {{ application.job_position.company.name }}
+        </h1>
+        <form method="POST" action="{% url 'edit_application' application.pk %}" enctype="multipart/form-data">
     {% else %}
-    <h1 style="color: black">Add Job Application</h1>
+        <h1 style="color: black; font-size: 28px; margin-bottom: 20px; text-align: center;">
+            Add Job Application
+        </h1>
         <form method="POST" action="{% url 'create_application' %}" enctype="multipart/form-data">
-    {% csrf_token %}
+    {% endif %}
     
-    <div class="company-form">
-        {{ company_form.as_p }}
-    </div>
-    
-    <div class="job-position-form">
-        {{ jobPosition_form.as_p }}
-    </div>
-    
-    <div class="application-form">
-        {{ application_form.as_p }}
-    </div>
-    
-    <button type="submit" class='form-button'>Submit Application</button>
-</form>
-{% endif %}
+        {% csrf_token %}
+
+        <div class="company-form" style="margin-bottom: 20px;">
+            {{ company_form.as_p }}
+        </div>
+        
+        <div class="job-position-form" style="margin-bottom: 20px;">
+            {{ jobPosition_form.as_p }}
+        </div>
+        
+        <div class="application-form" style="margin-bottom: 20px;">
+            {{ application_form.as_p }}
+        </div>
+        
+        <button type="submit" 
+            style=" width:100%; color: black; border: 1.5px solid black; padding: .5rem 1rem; border-radius: 6px; cursor: pointer; background-color: antiquewhite; font-weight: 600; text-decoration: none; transition: all 0.3s ease;"
+            onmouseover="; this.style.color='black'; this.style.backgroundColor='white';"
+            onmouseout="this.style.backgroundColor='antiquewhite'; this.style.color='black';">    
+            {% if application %} Edit Application {% else %} Submit Application {% endif %}
+</button>
+
+    </form>
+</div>
+
 {% endblock %}
