@@ -64,6 +64,7 @@ a:hover {
   background-color: antiquewhite;
   cursor: pointer;
 }
+
 .logout-button:hover { 
   background-color: white;
 }

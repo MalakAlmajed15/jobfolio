@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class= 'list-title'>Applications</h1>
-<a href="{% url 'create_application' %}" class='list-button'>Add Application</a>
+<div style="margin: 30px;">
+<h1>Applications</h1>
+<a href="{% url 'create_application' %}" style="color: black; border: 1.5px solid black; padding: .5rem .85rem; border-radius: 6px; cursor: pointer;  background-color: antiquewhite; ">Add Application</a>
+<div style="margin-top: 20px; gap: 20px;  display:flex; flex-direction: row;">
 {% if applications %}
       {% for app in applications %}
-        <ul class='application-list'>
+        <ul style="list-style-type: none; padding: 0; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 20px; padding: 15px; max-width: 400px;">
           <li class='list-item'>Company Name: {{app.job_position.company.name}}</li>
           <li class='list-item'>Job Title: {{ app.job_position.job_position}}</li>
           <li class='list-item'>Date Applied: {{ app.date_applied}}</li>
-          <a href="{% url 'application_details' app.pk%}" class='details-button'>Show details</a>
+          <div>
+            <a href="{% url 'application_details' app.pk%}" style="color: black; text-decoration: underline">Show details</a>
+          </div>
+          
         </ul>
       {% endfor %}
 {% else %}
   <p class='list-message'>No applications yet.</p>
 {% endif %}
-
+</div>
+</div>
 {% endblock %}

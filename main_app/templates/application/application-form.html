@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if application %}
-<h1 class='form-title'>Edit {{ application.job_position.company.name }}</h1>
+<h1 style="color: blue">Edit {{ application.job_position.company.name }}</h1>
     <form method="POST" action="{% url 'edit_application' application.pk %}" enctype="multipart/form-data">
         {% csrf_token %}
     
@@ -22,7 +22,7 @@
     <button type="submit" class='form-button'>Edit Application</button>
     </form>
     {% else %}
-    <h1 class='form-title'>Add Job Application</h1>
+    <h1 style="color: black">Add Job Application</h1>
         <form method="POST" action="{% url 'create_application' %}" enctype="multipart/form-data">
     {% csrf_token %}
     
