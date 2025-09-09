@@ -1,27 +1,59 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class='details-title'>Application Details</h1>
-<ul class='details-list'>
-  <li class='list-item'>Company Name: {{ application.job_position.company.name }}</li>
-  <li class='list-item'>Company Website: <a href="{{ application.job_position.company.website }}">{{ application.job_position.company.name }}</a></li>
-  <li class='list-item'>Job Title: {{ application.job_position.job_position }}</li>
-  <li class='list-item'>Company Location: {{ application.job_position.location }}</li>
-  <li class='list-item'>Salary: {{ application.job_position.salary }}</li>
-  <li class='list-item'>Date Applied: {{ application.date_applied }}</li>
-  <li class='list-item'>Status: {{ application.status }}</li>
-  <li class='list-item'>Notes: {{ application.notes}}</li>
-  <li class='list-item'>Resume: 
-    {% if application.resume %}
-      <a href="{{ application.resume.url }}" class='list-button'>View Resume</a>
-    {% else %}
-      No resume uploaded.
-    {% endif %}
-    </li>    
-  <a href="{% url 'edit_application' application.pk%}" class='list-button'>Edit</a>
-  <form action="{% url 'delete_application' application.pk%}" method='post'>
-    {% csrf_token %}
-    <button type="submit"  class='list-button'>Delete</button>
-  </form>
-</ul>
+<div style="max-width: 700px; margin: 40px auto; padding: 30px; border: 1px solid #ddd; border-radius: 10px; background-color: #fafafa; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+
+  <h1 style="text-align: center; font-size: 28px; margin-bottom: 25px; color:black;">Application Details</h1>
+
+  <ul style="list-style-type: none; padding: 0; margin: 0; font-size: 16px; line-height: 1.5; color: #333;">
+    <li style="margin-bottom: 10px;"> <span style="font-weight: bold">🏢 Company Name:</span> {{ application.job_position.company.name }}</li>
+    <li style="margin-bottom: 10px;"> <span style="font-weight: bold">🔗 Company Website:</span> 
+      <a href="{{ application.job_position.company.website }}" style="color: #2563eb; text-decoration: none;"
+         onmouseover="this.style.textDecoration='underline';"
+         onmouseout="this.style.textDecoration='none';">
+         {{ application.job_position.company.website }}
+      </a>
+    </li>
+    <li style="margin-bottom: 10px;"> <span style="font-weight: bold">💼 Job Title:</span> {{ application.job_position.job_position }}</li>
+    <li style="margin-bottom: 10px;"> <span style="font-weight: bold">📍 Location:</span> {{ application.job_position.location }}</li>
+    <li style="margin-bottom: 10px;"> <span style="font-weight: bold">💰 Salary:</span> {{ application.job_position.salary }}</li>
+    <li style="margin-bottom: 10px;"> <span style="font-weight: bold">📅 Date Applied:</span> {{ application.date_applied }}</li>
+    <li style="margin-bottom: 10px;"> <span style="font-weight: bold">📌 Status:</span> {{ application.status }}</li>
+    <li style="margin-bottom: 10px;"> <span style="font-weight: bold">📝 Notes:</span> {{ application.notes|default:"No notes added." }}</li>
+    <li style="margin-bottom: 20px;"> <span style="font-weight: bold">📎 Resume:</span> 
+      {% if application.resume %}
+        <a href="{{ application.resume.url }}" 
+          style="color: #2563eb; text-decoration: none;"
+          onmouseover="this.style.textDecoration='underline';"
+          onmouseout="this.style.textDecoration='none';">
+          View Resume
+        </a>
+      {% else %}
+        <span style="color: grey;">No resume uploaded.</span>
+      {% endif %}
+    </li>
+  </ul>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <a href="{% url 'edit_application' application.pk %}" 
+       style=" border: 1.5px solid black; border-radius: 6px; cursor: pointer; flex: 1; text-align: center; margin-right: 10px; padding: 10px; background-color: antiquewhite; color: black;  text-decoration: none; font-weight: bold; transition: all 0.3s ease;"
+       onmouseover="this.style.backgroundColor='white';"
+       onmouseout="this.style.backgroundColor='antiquewhite';">
+       Edit
+    </a>
+    
+    <form action="{% url 'delete_application' application.pk %}" method="post" style="flex: 1; margin-left: 10px;">
+      {% csrf_token %}
+      <button type="submit" 
+              style=" margin-right: 10px; border: 1.5px solid black; border-radius: 6px; cursor: pointer; width: 100%; padding: 10px; background-color: antiquewhite; color: black; font-weight: 700; cursor: pointer; transition: all 0.3s ease; height: 100%;"
+              onmouseover="this.style.backgroundColor='white';"
+              onmouseout="this.style.backgroundColor='antiquewhite';">
+        Delete
+      </button>
+    </form>
+  </div>
+
+    </form>
+  </div>
+</div>
 {% endblock %}
