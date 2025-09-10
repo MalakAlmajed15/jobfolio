@@ -15,7 +15,7 @@ I built **JobFolio** to provide a single, intuitive dashboard where users can:
 
 
 ## 🎨 Screenshot  
-<img width="728" height="485" alt="Image" src="https://github.com/user-attachments/assets/315d23da-2b59-4e88-a7a3-68f1cc7afd52" />
+<img width="1919" height="1016" alt="Image" src="https://github.com/user-attachments/assets/8de28944-9b6c-4875-b12d-b72f60c9dcb9" />
 
 
 <img width="1919" height="1028" alt="Image" src="https://github.com/user-attachments/assets/e6deff3f-fb2b-4910-8bb5-f5f1347a3312" />
