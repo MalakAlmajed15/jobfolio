@@ -28,7 +28,7 @@ class ApplicationForm(forms.ModelForm):
             'date_applied': 'Date Applied',
             'status': 'Application Status',
             'notes': 'Additional Notes',
-            'resume': 'Upload Resume'
+            'resume': 'Upload CV'
         }
         widgets = {
             'date_applied': forms.DateInput(attrs={'type': 'date'}),

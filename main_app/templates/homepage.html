@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="text-align: center; margin-top: 150px;">
-    <div style="margin-bottom: 30px;">
-    <h1 style="color: black; font-size: 100px; margin-bottom: 0;">JobFolio</h1>
-    <p style='font-size: 15px; margin-top: 5px;'>All your job applications, organized in one click</p>
-    </div>
-    <div style="display: flex; justify-content: center; gap: 20px; ">
-    <a href="{% url 'application_list' %}" style= "color: black; border: 1.5px solid black; padding: .5rem .85rem; border-radius: 6px; cursor: pointer;  background-color: antiquewhite;  font-weight: 600; " onmouseover=" this.style.transform='scale(1.05)';this.style.color='black'; this.style.backgroundColor='white';"
-           onmouseout="this.style.backgroundColor='antiquewhite'; this.style.color='black'; this.style.transform='scale(1)';">View Applications</a>
-    <a href="{% url 'create_application' %}" style= "color: black; border: 1.5px solid black; padding: .5rem .85rem; border-radius: 6px; cursor: pointer;  background-color: antiquewhite;  font-weight: 600; " onmouseover=" this.style.transform='scale(1.05)';this.style.color='black'; this.style.backgroundColor='white';"
-           onmouseout="this.style.backgroundColor='antiquewhite'; this.style.color='black'; this.style.transform='scale(1)';">Add Application</a>
-    </div>
-</div>
-{% endblock content %}
+<div class="home-head">
 
+</div>
+
+<div class="home-content">
+  <div class="home-header">
+    <h1 class="home-title">JobFolio</h1>
+    <p class="home-description">All your job applications, organized in one click</p>
+  </div>
+
+  <div class="home-buttons">
+    <a href="{% url 'application_list' %}" class="button">View Applications</a>
+    <a href="{% url 'create_application' %}" class="button">Add Application</a>
+  </div>
+</div>
+{% endblock %}

@@ -141,3 +141,77 @@ a:hover {
   opacity: 0.95;
 }
 
+.home-head{
+  height:250px;
+  background:antiquewhite;
+}
+
+.home-content{
+  max-width:900px;
+  margin:-90px auto 60px;
+  padding:0 20px;
+  text-align:center;
+}
+
+.home-header{
+  display:grid; 
+  place-items:center; 
+  gap:8px; 
+  margin-bottom:22px;
+}
+
+
+.home-title{
+  font-size:100px; 
+  line-height:1; 
+  margin:2px 0 0; 
+  font-weight:800;
+}
+.home-description{
+  color:black; 
+  font-size:16px;
+}
+
+.home-buttons{
+  display:flex; 
+  justify-content:center; 
+  gap:16px; 
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex; 
+  align-items:center; 
+  justify-content:center;
+  padding:.65rem 1.1rem;
+  border-radius:10px; 
+  text-decoration:none; 
+  cursor:pointer;
+  font-weight:800; 
+  font-size:16px; 
+  line-height:1;
+  background-color: antiquewhite
+}
+
+.button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    padding: 0.4rem 0.8rem;
+    border: 1.5px solid #222;
+    border-radius: 6px;
+    background-color: antiquewhite;
+    color: #111;
+    font-weight: 600;
+    font-size: 14px; 
+    cursor: pointer;
+    transition: transform 0.15s ease;
+    text-decoration: none;
+}
+.button:hover{
+  background:#fff;
+  transform:scale(1.03);
+}
+

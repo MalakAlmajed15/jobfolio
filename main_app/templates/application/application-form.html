@@ -1,7 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+.container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+    
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: black;
+}
+    
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; 
+    height: 45px; 
+}
 
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #0073e6;
+}
+
+input[type="file"] {
+    margin-top: 8px;
+    display: block;
+}
+
+</style>
 <div style="max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid #ddd; border-radius: 10px; background-color: #fafafa; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
 
     {% if application %}

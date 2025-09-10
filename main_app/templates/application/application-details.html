@@ -20,13 +20,11 @@
     <li style="margin-bottom: 10px;"> <span style="font-weight: bold">📅 Date Applied:</span> {{ application.date_applied }}</li>
     <li style="margin-bottom: 10px;"> <span style="font-weight: bold">📌 Status:</span> {{ application.status }}</li>
     <li style="margin-bottom: 10px;"> <span style="font-weight: bold">📝 Notes:</span> {{ application.notes|default:"No notes added." }}</li>
-    <li style="margin-bottom: 20px;"> <span style="font-weight: bold">📎 Resume:</span> 
+    <li style="margin-bottom: 20px;"> <span style="font-weight: bold">📎 CV:</span> 
       {% if application.resume %}
         <a href="{{ application.resume.url }}" 
-          style="color: #2563eb; text-decoration: none;"
-          onmouseover="this.style.textDecoration='underline';"
-          onmouseout="this.style.textDecoration='none';">
-          View Resume
+          style="color: #2563eb; text-decoration: none;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">
+          View CV
         </a>
       {% else %}
         <span style="color: grey;">No resume uploaded.</span>
@@ -35,25 +33,41 @@
   </ul>
 
   <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-    <a href="{% url 'edit_application' application.pk %}" 
-       style=" border: 1.5px solid black; border-radius: 6px; cursor: pointer; flex: 1; text-align: center; margin-right: 10px; padding: 10px; background-color: antiquewhite; color: black;  text-decoration: none; font-weight: 800; transition: all 0.3s ease;"
-       onmouseover="this.style.backgroundColor='white';"
-       onmouseout="this.style.backgroundColor='antiquewhite';">
-       Edit
-    </a>
+    <a href="{% url 'edit_application' application.pk %}" class="button">Edit</a>
     
     <form action="{% url 'delete_application' application.pk %}" method="post" style="flex: 1; margin-left: 10px;">
       {% csrf_token %}
-      <button type="submit" 
-              style=" margin-right: 10px; border: 1.5px solid black; border-radius: 6px; cursor: pointer; width: 100%; padding: 10px; background-color: antiquewhite; color: black; font-weight: 800; cursor: pointer; transition: all 0.3s ease; height: 100%;"
-              onmouseover="this.style.backgroundColor='white';"
-              onmouseout="this.style.backgroundColor='antiquewhite';">
-        Delete
-      </button>
+      <button type="submit" class="button">Delete</button>
     </form>
   </div>
 
-    </form>
-  </div>
 </div>
+
+<style>
+  .button {
+    display: inline-block;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    padding: 10px;
+    border: 1.5px solid black;
+    border-radius: 6px;
+    background-color: antiquewhite;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;  
+}
+
+button.button {
+    width: 100%;
+    background: antiquewhite;
+    border: 1.5px solid black;
+}
+
+ .button:hover {
+    background-color: white;
+  }
+</style>
 {% endblock %}
