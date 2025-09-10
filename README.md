@@ -2,7 +2,7 @@
 
 ## 📝 Introduction  
 
-**JobFolio** is a full-stack web application designed to help job seekers organize and track their job applications efficiently. The platform allows users to manage companies, job positions, and applications in one place. It streamlines the job search process with structured forms, status tracking, resume uploads, and detailed notes — keeping everything centralized and easy to manage.  
+**JobFolio** is a full-stack web application designed to help job seekers organize and track their job applications efficiently. The platform allows users to manage companies, job positions, and applications in one place. It streamlines the job search process with structured forms, status tracking, resume uploads, and detailed notes, keeping everything centralized and easy to manage.  
 
 ### Why I Built It  
 I built **JobFolio** to provide a single, intuitive dashboard where users can:  
@@ -14,22 +14,19 @@ I built **JobFolio** to provide a single, intuitive dashboard where users can:
 ---
 
 ## 🚀 Getting Started  
-
-* 🌐 [Website Link](#)  
+  
 
 ---
 
 ## 🎨 Screenshot  
 
-* [screenshot]
 
 ---
 
 ## 🛠️ Technologies Used  
 
 - **Programming Language:** Python 
-- **Framework:** Django 
-- **Database:**   
+- **Framework:** Django   
 - **Authentication:** Django Auth system  
 - **File Storage:** Django FileField
 
