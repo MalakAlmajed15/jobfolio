@@ -33,7 +33,7 @@ I built **JobFolio** to provide a single, intuitive dashboard where users can:
 
 ## 🔮 Future Enhancements  
 
-- 📊 Dashboard with interactive charts for application trends.  
+- 📊 Dashboard with interactive charts.  
 - 📅 Calendar view for interviews and deadlines.  
 - 🔔 Email / SMS reminders for upcoming interviews.  
 
